@@ -1,7 +1,7 @@
 # altium_stdlib
 Standard Altium library
 
-Lägg bibliotek i undermappar typ lib_<whatever>.
+Lägg bibliotek i undermappar typ lib_whatever.
 Lägg sedan till genererade intlibs i andra projekt 
 
 T.ex:
