@@ -1,0 +1,6 @@
+Chip2PinSM,Package Specifications,,,,,,,,,,,,,,,,Footprint Specifications,,,,,,,,,,
+FootprintName,FootprintDescription,Lmin,Lmax,Wmin,Wmax,Tmin,Tmax,Amin,Amax,PackageType,PolarityPin,DensityLevel,JTmin,JHmin,JSmin,DrawingNote,Z,G,X,Y,C,A,B,R1,R2,V1,V2
+,,0.9,1.1,0.4,0.6,0.1,0.3,,0.6,C,1,N,,,,,,,,,,,,,,,
+,,1.45,1.75,0.65,0.95,0.2,0.5,,0.85,C,1,N,,,,,,,,,,,,,,,
+,,1.8,2.2,1.05,1.45,0.25,0.75,,1.1,C,1,N,,,,,,,,,,,,,,,
+,,3,3.4,1.4,1.8,0.25,0.75,,1.35,C,1,N,,,,,,,,,,,,,,,
