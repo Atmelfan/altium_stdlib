@@ -11,7 +11,7 @@ all: Wiki/Overview.md
 
 .PHONY: clean
 clean:
-	rm $(OBJECTS) Overview.md
+	rm -rf $(OBJECTS) Wiki
 
 Wiki/Overview.md: $(OBJECTS)
 	mkdir Wiki

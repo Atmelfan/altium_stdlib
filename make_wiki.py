@@ -13,6 +13,7 @@ def read_files(files):
             reader = csv.DictReader(csvfile)
             for row in reader:
                 row['library'] = '[{0}](../tree/master/{0})'.format(os.path.dirname(file))
+                row['library_name'] = '{}'.format(os.path.dirname(file))
                 print(row)
                 parts.append(row)
     return parts
@@ -29,9 +30,9 @@ def write_table(parts, keys, md: mdutils.MdUtils, sort_by='Comment'):
     md.new_table(columns=len(keys), rows=len(sorted_parts)+1, text=tabulated)
 
 
-def write_designators(parts, keys, md: mdutils.MdUtils):
-    parts = sorted(parts, key=lambda i: i['designator'])
-    groups = groupby(parts, lambda i: i['designator'])
+def write_designators(parts, keys, md: mdutils.MdUtils, sort_by='designator'):
+    parts = sorted(parts, key=lambda i: i[sort_by])
+    groups = groupby(parts, lambda i: i[sort_by])
     for designator, group in groups:
         print('Designator {}'.format(designator))
         md.new_line()
@@ -54,9 +55,9 @@ if __name__ == "__main__":
     #print(parts)
     mdFile = mdutils.MdUtils(file_name=args.output, title='Overview')
     mdFile.new_header(level=1, title='By designator')
-    write_designators(parts, ['id', 'designator', 'Comment', 'description', 'library'], mdFile)
+    write_designators(parts, ['id', 'designator', 'Comment', 'description', 'library'], mdFile, sort_by='designator')
     mdFile.new_header(level=1, title='By library')
-    write_table(parts, ['id', 'designator', 'Comment', 'description', 'library'], mdFile, sort_by='library')
+    write_designators(parts, ['id', 'designator', 'Comment', 'description', 'library'], mdFile, sort_by='library_name')
     mdFile.new_header(level=1, title='By part number')
     write_table(parts, ['id', 'designator', 'Comment', 'description', 'library'], mdFile)
     mdFile.new_table_of_contents(table_title='Contents', depth=2)
