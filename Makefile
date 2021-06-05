@@ -1,5 +1,5 @@
 PYTHON3=python3
-ALTIUM_TOOL=../library.py
+ALTIUM_TOOL=bin/library.py
 
 ROOT_DIRECTORY=.
 
