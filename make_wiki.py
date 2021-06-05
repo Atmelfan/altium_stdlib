@@ -12,7 +12,7 @@ def read_files(files):
         with open(file, newline='') as csvfile:
             reader = csv.DictReader(csvfile)
             for row in reader:
-                row['library'] = '[{0}](../blob/main/{0})'.format(os.path.dirname(file))
+                row['library'] = '[{0}](../tree/master/{0})'.format(os.path.dirname(file))
                 print(row)
                 parts.append(row)
     return parts
