@@ -32,7 +32,7 @@ jobs:
         path: bin
       
     - name: Build application
-      run: make all BRANCH=master; ls Wiki
+      run: make all BRANCH=master; ls Wiki > Wiki/log.md
         
     - name: Publish to GitHub Wiki
       # You may pin to the exact commit or the version.
