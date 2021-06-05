@@ -54,7 +54,7 @@ if __name__ == "__main__":
 
     parts = read_files(args.files, args.branch)
     #print(parts)
-    mdFile = mdutils.MdUtils(file_name=args.output, title='Overview')
+    mdFile = mdutils.MdUtils(file_name=args.output, title='')
     mdFile.new_paragraph('⚠️ Automatically generated page. Any changes will be overwritten.')
     mdFile.new_line()
     x = mdFile.create_marker('toc')
