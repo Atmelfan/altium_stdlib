@@ -44,4 +44,4 @@ jobs:
         # A path to the directory of files to publish
         path: Overview.md
       env:
-        GH_PERSONAL_ACCESS_TOKEN: ${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}
+        GITHUB_PERSONAL_ACCESS_TOKEN: ${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}
