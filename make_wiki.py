@@ -6,15 +6,15 @@ import os
 from argparse import ArgumentParser
 
 
-def read_files(files):
+def read_files(files, branch):
     parts = []
     for file in files:
         with open(file, newline='') as csvfile:
             reader = csv.DictReader(csvfile)
             for row in reader:
-                row['library'] = '[{0}](../tree/master/{0})'.format(os.path.dirname(file))
+                row['library'] = '[{0}](../tree/{1}/{0})'.format(os.path.dirname(file), branch)
                 row['library_name'] = '{}'.format(os.path.dirname(file))
-                print(row)
+                #print(row)
                 parts.append(row)
     return parts
 
@@ -34,7 +34,7 @@ def write_designators(parts, keys, md: mdutils.MdUtils, sort_by='designator'):
     parts = sorted(parts, key=lambda i: i[sort_by])
     groups = groupby(parts, lambda i: i[sort_by])
     for designator, group in groups:
-        print('Designator {}'.format(designator))
+        #print('Designator {}'.format(designator))
         md.new_line()
         md.new_header(level=2, title=designator)
         sorted_parts = sorted(group, key=lambda i: i['id'])
@@ -49,9 +49,10 @@ if __name__ == "__main__":
     parser = ArgumentParser(description="Extract parts from .SchLib or .LibPkg")
     parser.add_argument("files", nargs='*')
     parser.add_argument("--output", '-o')
+    parser.add_argument("--branch", default='master')
     args = parser.parse_args()
 
-    parts = read_files(args.files)
+    parts = read_files(args.files, args.branch)
     #print(parts)
     mdFile = mdutils.MdUtils(file_name=args.output, title='Overview')
     mdFile.new_header(level=1, title='By designator')

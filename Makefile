@@ -1,5 +1,7 @@
 PYTHON3=python3
 ALTIUM_TOOL=bin/library.py
+BRANCH=master
+
 
 ROOT_DIRECTORY=.
 
@@ -15,7 +17,7 @@ clean:
 
 Wiki/Overview.md: $(OBJECTS)
 	mkdir Wiki
-	$(PYTHON3) ./make_wiki.py $(OBJECTS) -o Wiki/Overview.md
+	$(PYTHON3) ./make_wiki.py $(OBJECTS) --branch $(BRANCH) -o Wiki/Overview.md
 
 %.csv: %.LibPkg
 	$(PYTHON3) $(ALTIUM_TOOL) $< --output $@

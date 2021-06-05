@@ -34,7 +34,7 @@ jobs:
         path: bin
       
     - name: Build application
-      run: make all
+      run: make all BRANCH=master
         
     - name: Publish to GitHub Wiki
       # You may pin to the exact commit or the version.
