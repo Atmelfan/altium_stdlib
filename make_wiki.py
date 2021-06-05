@@ -12,8 +12,8 @@ def read_files(files, branch):
         with open(file, newline='') as csvfile:
             reader = csv.DictReader(csvfile)
             for row in reader:
-                row['library'] = '[{0}](../tree/{1}/{0})'.format(os.path.dirname(file), branch)
-                row['library_name'] = '{}'.format(os.path.dirname(file))
+                row['library'] = '[{0}](../tree/{1}/{0})'.format(os.path.dirname(file).lstrip('./'), branch)
+                row['library_name'] = '{}'.format(os.path.dirname(file).lstrip('./'))
                 #print(row)
                 parts.append(row)
     return parts
