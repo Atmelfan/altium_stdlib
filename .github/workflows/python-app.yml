@@ -6,8 +6,6 @@ name: Python application
 on:
   push:
     branches: [ master ]
-  pull_request:
-    branches: [ master ]
 
 jobs:
   build:
@@ -42,6 +40,6 @@ jobs:
       uses: SwiftDocOrg/github-wiki-publish-action@1.0.0
       with:
         # A path to the directory of files to publish
-        path: Wiki
+        path: ./Wiki
       env:
         GITHUB_PERSONAL_ACCESS_TOKEN: ${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}
