@@ -1,0 +1,45 @@
+# This workflow will install Python dependencies, run tests and lint with a single version of Python
+# For more information see: https://help.github.com/actions/language-and-framework-guides/using-python-with-github-actions
+
+name: Wiki generator
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python 3.9
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.9
+      
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install mdutils olefile
+        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+        
+    - name: Checkout tools repo
+      uses: actions/checkout@v2
+      with:
+        repository: Atmelfan/python-altium
+        path: bin
+      
+    - name: Build application
+      run: make all BRANCH=master
+        
+    - name: Publish to GitHub Wiki
+      # You may pin to the exact commit or the version.
+      # uses: SwiftDocOrg/github-wiki-publish-action@a87db85ed06e4431be29cfdcb22b9653881305d0
+      uses: SwiftDocOrg/github-wiki-publish-action@1.0.0
+      with:
+        # A path to the directory of files to publish
+        path: ./Wiki
+      env:
+        GITHUB_PERSONAL_ACCESS_TOKEN: ${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}
