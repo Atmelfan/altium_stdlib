@@ -2,4 +2,5 @@ History/
 __Previews/
 Project\ Logs\ for*/
 *.html
-
+lib_*.csv
+Wiki/
